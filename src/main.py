@@ -4,7 +4,7 @@ import discord
 from discord.ext import commands
 
 import settings
-from modules import randomimage
+from modules import image
 
 TOKEN = os.getenv('DISCORD_BOT_API_TOKEN')
 bot = commands.Bot(command_prefix='!')
@@ -29,8 +29,11 @@ async def greet(ctx):
     brief='Retrieves a random picture')
 async def get_randompic(ctx, arg):
     try:
-        embed = randomimage.process(arg)
+        embed = await image.process(arg)
+        if isinstance(embed, str):
+            await ctx.send(embed)
         await ctx.send(embed=embed)
+
     except Exception as e:
         print(e)
         await ctx.send("Sorry, something went wrong.")
