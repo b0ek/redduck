@@ -7,5 +7,6 @@ install:
 jobs:
   include:
     -stage: precheck
-
+    -script: black --check .
 script:
+- black --check .
