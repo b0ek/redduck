@@ -9,4 +9,4 @@ jobs:
     -stage: precheck
 
 script:
-- pytest
+- black --check .
