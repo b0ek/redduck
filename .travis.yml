@@ -9,4 +9,3 @@ jobs:
     -stage: precheck
 
 script:
-- black --check .
